@@ -44,6 +44,10 @@ class DefaultController extends Controller
                     $errors[$solution['error']]  = $solution['error'];
                     $emails[$solution['notify']] = $solution['notify'];
                 }
+
+                if (count($errors) < 1) {
+                    $errors[] = 'Sorry we did not found this error. The said error has been reported.';
+                }
             }
         }
 
