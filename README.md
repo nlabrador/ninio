@@ -1,0 +1,2 @@
+# ninio
+Bot Error Analyzer
