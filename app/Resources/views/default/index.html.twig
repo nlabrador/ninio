@@ -45,6 +45,7 @@
                         </li>
                     {% endfor %}
                 </ul>
+                {% if solutions %}
                 <h4>Found Solutions:</h4>
                 <ul>
                     {% for solution in solutions %}
@@ -64,6 +65,7 @@
                     </li>
                   {% endfor %}
                 </ul>
+                {% endif %}
               </div>
             </div>
             {% endif %}
