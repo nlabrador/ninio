@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}[applications]{% endblock %}
+{% block page_title %}Applications{% endblock %}
+
+{% block body %}
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="100%">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Application</th>
+        <th class="mdl-data-table__cell--non-numeric">Description</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><a href="{{ path('applicationsetup', { id : application.getApplicationId }) }}">{{ application.getName }}</a></td>
+                <td class="mdl-data-table__cell--non-numeric">{{ application.getDescription }}</td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <a href="">Edit</a> | 
+                    <a href="">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

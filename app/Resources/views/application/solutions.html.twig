@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}[application setup]{% endblock %}
+{% block page_title %}{{ error.getApplication.getName }} Setup{% endblock %}
+
+{% block body %}
+        <div class="mdl-cell mdl-cell--12-col">
+            <h5>Error: {{ error.getError }}</h5>
+            <form action="{{ path('applicationsolutions', {id : error.getErrorId}) }}" method="POST">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="solution" name="solution">
+                    <label class="mdl-textfield__label" for="solution">Add New Solution...</label>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                    Save
+                </button>
+            </form>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="100%">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Solution</th>
+                    <th class="mdl-data-table__cell--non-numeric"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for solution in solutions %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">{{ solution.getSolution }}</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <a href="">Edit</a> | 
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+{% endblock %}

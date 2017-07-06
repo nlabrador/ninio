@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}[new application]{% endblock %}
+{% block page_title %}New Application{% endblock %}
+
+{% block body %}
+        <form action="{{ path('newapplication') }}" method="POST">
+            <div class="demo-options mdl-card mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text mdl-color-text--blue-grey-500">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name" name="name">
+                        <label class="mdl-textfield__label" for="name">Application Name...</label>
+                    </div>
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea class="mdl-textfield__input" type="text" rows= "5" id="description" name="description"></textarea>
+                        <label class="mdl-textfield__label" for="description">Description...</label>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                            Save Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock %}

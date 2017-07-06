@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}[application setup]{% endblock %}
+{% block page_title %}{{ application.getName }} Setup{% endblock %}
+
+{% block body %}
+        <div class="mdl-cell mdl-cell--12-col">
+            <form action="{{ path('applicationsetup', {id : application.getApplicationId}) }}" method="POST">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="error" name="error">
+                    <label class="mdl-textfield__label" for="error">Input New Error...</label>
+                </div>
+                &nbsp;&nbsp;
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="notify" name="notify">
+                    <label class="mdl-textfield__label" for="notify">Emails to notify (comma separated)...</label>
+                </div>
+                &nbsp;&nbsp;
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                    Save
+                </button>
+            </form>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="100%">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Error</th>
+                    <th class="mdl-data-table__cell--non-numeric">Notify</th>
+                    <th class="mdl-data-table__cell--non-numeric"></th>
+                    <th class="mdl-data-table__cell--non-numeric"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for error in errors %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">{{ error.getError }}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ error.getNotify }}</td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <a href="{{ path('applicationsolutions', { id : error.getErrorId }) }}">Solutions</a> 
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <a href="{{ path('errorupdate', {id: error.getErrorId}) }}">Edit</a> | 
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+{% endblock %}

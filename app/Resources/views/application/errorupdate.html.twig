@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}[error update]{% endblock %}
+{% block page_title %}{{ error.application.getName }} Update{% endblock %}
+
+{% block body %}
+        <div class="mdl-cell mdl-cell--12-col">
+            <form action="{{ path('errorupdate', {id : error.getErrorId}) }}" method="POST">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="error" name="error" value="{{ error.getError }}">
+                    <label class="mdl-textfield__label" for="error">Update Error...</label>
+                </div>
+                &nbsp;&nbsp;
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="notify" name="notify" value="{{ error.getNotify }}">
+                    <label class="mdl-textfield__label" for="notify">Emails to notify (comma separated)...</label>
+                </div>
+                &nbsp;&nbsp;
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                    Update
+                </button>
+                &nbsp;
+                <a href="{{ path('applicationsetup', {id : error.getApplication.getApplicationId}) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</a>
+            </form>
+        </div>
+{% endblock %}
